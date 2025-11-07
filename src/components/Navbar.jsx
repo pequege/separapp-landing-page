@@ -8,7 +8,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
-import { alpha, styled } from "@mui/material";
+import { styled, Typography } from "@mui/material";
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   display: 'flex',
@@ -19,10 +19,7 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   backdropFilter: 'blur(24px)',
   border: '1px solid',
   borderColor: (theme.vars || theme).palette.divider,
-  backgroundColor: theme.vars
-    ? `rgba(${theme.vars.palette.background.defaultChannel} / 0.4)`
-    : alpha(theme.palette.background.default, 0.4),
-  boxShadow: (theme.vars || theme).shadows[1],
+  background: "rgba(0, 0, 0, 0.28)",
   padding: '0 24px',
 }));
 
@@ -54,38 +51,8 @@ function Navbar() {
       }}>
       <Container maxWidth="xl">
         <StyledToolbar variant="dense" disableGutters>
-            {/* Logo */}
-            <Box sx={{ display: "flex", alignItems: "center" }}>
-              <img
-                src="/navbar-logo.png"
-                alt="Logo SeparApp"
-                style={{ height: 30, marginRight: 12 }}
-              />
-            </Box>
-            {/* Desktop menu */}
-            <Box
-              sx={{
-                flexGrow: 1,
-                display: { xs: "none", md: "flex" },
-                justifyContent: "flex-end",
-              }}
-            >
-              {pages.map((page) => (
-                <Button
-                  key={page.label}
-                  href={page.href}
-                  sx={{
-                    color: "text.primary",
-                    display: "block",
-                    fontWeight: 600,
-                  }}
-                >
-                  {page.label}
-                </Button>
-              ))}
-            </Box>
-            {/* Mobile menu */}
-            <Box sx={{ display: { xs: "flex", md: "none" } }}>
+            {/* Mobile burger on the LEFT */}
+            <Box sx={{ display: { xs: "flex", md: "none" }, alignItems: 'center', order: 0 }}>
               <IconButton
                 size="large"
                 aria-label="menu"
@@ -93,6 +60,7 @@ function Navbar() {
                 aria-haspopup="true"
                 onClick={handleOpenNavMenu}
                 color="inherit"
+                sx={{ width: 40, height: 40 }}
               >
                 <MenuIcon />
               </IconButton>
@@ -101,12 +69,12 @@ function Navbar() {
                 anchorEl={anchorElNav}
                 anchorOrigin={{
                   vertical: "bottom",
-                  horizontal: "right",
+                  horizontal: "left",
                 }}
                 keepMounted
                 transformOrigin={{
                   vertical: "top",
-                  horizontal: "right",
+                  horizontal: "left",
                 }}
                 open={Boolean(anchorElNav)}
                 onClose={handleCloseNavMenu}
@@ -122,6 +90,43 @@ function Navbar() {
                   </MenuItem>
                 ))}
               </Menu>
+            </Box>
+
+            {/* Logo (center / middle order) */}
+            <Box sx={{ display: "flex", alignItems: "center", order: 1, flexGrow: 0 }}>
+              <Typography
+                variant="h6"
+                noWrap
+                className="urbane-font"
+                sx={{ color: 'inherit' }}
+              >
+                SeparApp
+              </Typography>
+            </Box>
+            <Box sx={{ display: "flex", alignItems: "center", order: 3, flexGrow: 0 }}></Box>
+
+            {/* Desktop menu on the right */}
+            <Box
+              sx={{
+                flexGrow: 1,
+                display: { xs: "none", md: "flex" },
+                justifyContent: "flex-end",
+                order: 2,
+              }}
+            >
+              {pages.map((page) => (
+                <Button
+                  key={page.label}
+                  href={page.href}
+                  sx={{
+                    color: "text.primary",
+                    display: "block",
+                    fontWeight: 600,
+                  }}
+                >
+                  {page.label}
+                </Button>
+              ))}
             </Box>
         </StyledToolbar>
       </Container>

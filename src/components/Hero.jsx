@@ -1,24 +1,24 @@
 import { Box, Typography, Button, Container } from "@mui/material";
 import { styled } from "@mui/system";
+import EventIcon from "@mui/icons-material/Event";
 
 // Importa la imagen desde tu carpeta de assets
 import heroImage from "../assets/hero-section-image.png";
 
 // Componentes con estilos
-const HeroContainer = styled(Box)({
+const HeroContainer = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
   alignItems: "center",
   minHeight: "100vh",
   textAlign: "center",
-  background: "linear-gradient(135deg, #1e3c1e 0%, #4caf50 100%)"
-  /* background: 'url("/hero-bg.png")',
-  backgroundAttachment: "fixed",
-  backgroundPosition: "center",
-  backgroundRepeat: "no-repeat",
-  backgroundSize: "cover" */
-});
+  background: "#e6e6e6",
+  // padding-top en móviles para evitar que el navbar tape el contenido
+  [theme.breakpoints.down("sm")]: {
+    paddingTop: theme.spacing(4), // cambia el valor si tu navbar tiene otra altura
+  },
+}));
 
 const HeroContent = styled(Box)({
   display: "flex",
@@ -27,7 +27,7 @@ const HeroContent = styled(Box)({
 });
 
 const HeroImage = styled("img")({
-  maxWidth: "100%",
+  maxWidth: "75%",
   height: "auto",
 });
 
@@ -37,6 +37,7 @@ const StyledButton = styled(Button)({
   padding: "12px 24px",
   "&:hover": {
     backgroundColor: "#1b5e20",
+    color: "white",
   },
 });
 
@@ -51,30 +52,31 @@ const Hero = () => {
               alignItems: "center",
               justifyContent: "center",
               flexDirection: { xs: "column", md: "row" },
-              gap: { xs: 4, md: 8 },
+              gap: { xs: 2, md: 8 },
             }}
           >
-            <Box sx={{ textAlign: { xs: "center", md: "left" } }}>
-              <Typography variant="h2" component="h1" gutterBottom>
-                Gana puntos,
+            <Box>
+              <HeroImage src={heroImage} alt="imagen de celular con la app de separapp" />
+            </Box>
+            <Box sx={{ textAlign: "left" }}>
+              <Typography variant="h4" component="h1" className="urbane-font" gutterBottom>
+                Ganá puntos,
                 <br />
-                Ayuda al <span style={{ color: "#4CAF50" }}>planeta</span>
+                Ayuda al <span style={{ background: "linear-gradient(90deg, #02BB61 0%, #C18CEF 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent"}}>planeta</span>
               </Typography>
-              <Typography variant="h5" component="p" sx={{ mb: 4 }}>
-                Lorem ipsum dolor sit amet consectetur. Viverra dui cras nisl
-                sed lacus et. Dolor tellus quam et at ac
+              <Typography component="p" variant="h6" sx={{ mb: 4 }}>
+                Transformá acciones simples en beneficios para vos y para el medioambiente
               </Typography>
               <StyledButton
                 variant="contained"
                 href={"https://wa.me/3814067218"}
                 target="_blank"
                 rel="noopener"
+                startIcon={<EventIcon />}
+                xs={{ fontSize: { xs: '0.8rem', md: '1rem' }}}
               >
                 Agendar reunión
               </StyledButton>
-            </Box>
-            <Box>
-              <HeroImage src={heroImage} alt="Separapp" />
             </Box>
           </Box>
         </HeroContent>
