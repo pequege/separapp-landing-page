@@ -4,6 +4,7 @@ import { Box } from '@mui/material'
 import ComoFunciona from './components/ComoFunciona'
 import Beneficios from './components/Beneficios'
 import Navbar from './components/navbar'
+import { Footer } from './components/Footer'
 
 function App() {
   return (
@@ -18,11 +19,14 @@ function App() {
         <Navbar />
         <Hero />
       </div>
-      <div style={{ scrollSnapAlign: 'start', height: '100vh' }}>
+      <div style={{ scrollSnapAlign: 'start' }}>
         <ComoFunciona />
       </div>
-      <div style={{ scrollSnapAlign: 'start', height: '100vh' }}>
+      <div style={{ scrollSnapAlign: 'start' }}>
         <Beneficios />
+      </div>
+      <div style={{ scrollSnapAlign: 'end', height: 'auto' }}>
+        <Footer />
       </div>
     </Box>
   )

@@ -12,7 +12,7 @@
 
   color-scheme: light dark;
   color: #222222;
-  background-color: #242424;
+  background-color: #E6E6E6;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -44,4 +44,11 @@ h1 {
 .urbane-font {
   font-family: Urbane, system-ui, Avenir, Helvetica, Arial, sans-serif !important;
   font-weight: 600 !important;
+}
+
+/* HTML: <div class="hexagon"></div> */
+.number-badge {/* adjust to control the size  */
+  background-color: #F9E813;
+  border-radius: 100%;
+  width: 25px;
 }

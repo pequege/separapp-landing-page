@@ -75,6 +75,7 @@ const ComoFunciona = () => {
         >
           Como Funciona
         </Typography>
+            <div className="hexegon">1</div>
         <Grid container spacing={2} justifyContent="center">
           {/* Primera Card con animación de entrada y salida */}
           <Grid item xs={12} sm={6} md={4}>
@@ -108,6 +109,7 @@ const ComoFunciona = () => {
                 sx={{ fontWeight: "medium" }}
                 className={`animate__animated ${animationClass}`}
               >
+                <div className="hexegon">1</div>
                 {carouselItems[currentIndex].title}
               </Typography>
             </Card>
@@ -141,6 +143,7 @@ const ComoFunciona = () => {
                   }}
                 />
                 <Typography gutterBottom sx={{ fontWeight: "medium" }}>
+                  <div className="number-badge">2</div>
                   {item.title}
                 </Typography>
               </Card>

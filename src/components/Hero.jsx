@@ -56,16 +56,35 @@ const Hero = () => {
             }}
           >
             <Box>
-              <HeroImage src={heroImage} alt="imagen de celular con la app de separapp" />
+              <HeroImage
+                src={heroImage}
+                alt="imagen de celular con la app de separapp"
+              />
             </Box>
             <Box sx={{ textAlign: "left" }}>
-              <Typography variant="h4" component="h1" className="urbane-font" gutterBottom>
+              <Typography
+                variant="h4"
+                component="h1"
+                className="urbane-font"
+                gutterBottom
+              >
                 Ganá puntos,
                 <br />
-                Ayuda al <span style={{ background: "linear-gradient(90deg, #02BB61 0%, #C18CEF 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent"}}>planeta</span>
+                Ayuda al{" "}
+                <span
+                  style={{
+                    background:
+                      "linear-gradient(90deg, #02BB61 0%, #C18CEF 100%)",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                  }}
+                >
+                  planeta
+                </span>
               </Typography>
               <Typography component="p" variant="h6" sx={{ mb: 4 }}>
-                Transformá acciones simples en beneficios para vos y para el medioambiente
+                Transformá acciones simples en beneficios para vos y para el
+                medioambiente
               </Typography>
               <StyledButton
                 variant="contained"
@@ -73,7 +92,7 @@ const Hero = () => {
                 target="_blank"
                 rel="noopener"
                 startIcon={<EventIcon />}
-                xs={{ fontSize: { xs: '0.8rem', md: '1rem' }}}
+                xs={{ fontSize: { xs: "0.8rem", md: "1rem" } }}
               >
                 Agendar reunión
               </StyledButton>
