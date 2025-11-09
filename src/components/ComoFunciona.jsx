@@ -20,26 +20,26 @@ const ComoFunciona = () => {
   const carouselItems = [
     {
       title: "Mirá Videos",
-      img: "./src/assets/como-funciona/image01.png",
+      img: "https://i.imgur.com/28Fx0Yt.png",
     },
     {
       title: "Asistí a eventos",
-      img: "./src/assets/como-funciona/image02.png",
+      img: "https://i.imgur.com/A4lsqnl.png",
     },
     {
       title: "Separá tus residuos",
-      img: "./src/assets/como-funciona/image03.png",
+      img: "https://imgur.com/HA2QHQ9.png",
     },
   ];
 
   const otherCards = [
     {
       title: "Ganá Puntos",
-      img: "./src/assets/como-funciona/image05.png",
+      img: "https://imgur.com/JT7UtFW.png",
     },
     {
       title: "Canjealos por beneficios",
-      img: "./src/assets/como-funciona/image04.png",
+      img: "https://imgur.com/kwTcKQV.png",
     },
   ];
 

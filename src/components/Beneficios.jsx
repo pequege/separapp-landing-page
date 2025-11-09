@@ -21,7 +21,7 @@ const Beneficios = () => {
     // padding-top en móviles para evitar que el navbar tape el contenido
     [theme.breakpoints.down("md")]: {
       paddingTop: theme.spacing(10), // cambia el valor si tu navbar tiene otra altura
-      paddingBottom: theme.spacing(5), 
+      paddingBottom: theme.spacing(5),
     },
   }));
 
@@ -31,21 +31,21 @@ const Beneficios = () => {
       title: "Menos Residuos en Disposición Final",
       description:
         "Reducimos el volumen de basura enviada al relleno sanitario, disminuyendo la contaminación y mejorando la calidad de vida en la ciudad.",
-      img: "./src/assets/impacto-esperado/impacto-esperado-1.png",
+      src: "https://media.pixverse.ai/pixverse%2Fmp4%2Fmedia%2Fweb%2Fori%2F2f86c441-0434-419b-b2da-5f68be641ded_seed1748126184.mp4",
     },
     {
       id: 2,
       title: "Aumento del Empleo Verde",
       description:
         "Impulsamos nuevos puestos de trabajo en economía circular, desde promotores ambientales hasta clasificadores y logística, generando oportunidades sostenibles para la comunidad.",
-      img: "./src/assets/impacto-esperado/impacto-esperado-2.png",
+      src: "https://media.pixverse.ai/pixverse%2Fmp4%2Fmedia%2Fweb%2Fori%2F0df890bc-c525-4c52-a514-0afb991cf5bb_seed1331030434.mp4",
     },
     {
       id: 3,
       title: "Conciencia Ambiental y Cambio Cultural",
       description:
         "Promovemos un cambio cultural sostenido hacia prácticas más responsables, formando ciudadanos comprometidos con el cuidado del ambiente y el futuro de su comunidad.",
-      img: "./src/assets/impacto-esperado/impacto-esperado-3.png",
+      src: "https://media.pixverse.ai/pixverse%2Fmp4%2Fmedia%2Fweb%2Fori%2Ffea9baf3-990c-4561-8692-1a0ce40a15ef_seed2119717918.mp4",
     },
   ];
 
@@ -103,12 +103,22 @@ const Beneficios = () => {
                     },
                   }}
                 >
+                  {/* Video en lugar de imagen */}
                   <CardMedia
-                    component="img"
-                    height="140"
-                    image={card.img}
-                    alt={card.title}
+                    component="video"
+                    src={card.src}
+                    controls={false}
+                    preload="metadata"
+                    autoPlay={true}
+                    loop
+                    sx={{
+                      height: 200,
+                      width: "100%",
+                      objectFit: "cover",
+                      backgroundColor: "#000", // fallback mientras carga
+                    }}
                   />
+
                   <CardContent sx={{ height: "100%" }}>
                     <Typography variant="h6" component="div">
                       {card.title}
