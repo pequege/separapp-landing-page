@@ -1,18 +1,21 @@
 import { useState, useEffect } from "react";
-import { Box, Card, CardMedia, Container, Typography } from "@mui/material";
+import { Box, Container, Typography } from "@mui/material";
 import { Grid, styled } from "@mui/system";
 import "animate.css";
 
 const ComoFunciona = () => {
-  const ComoFuncionaContainer = styled(Box)({
+  const ComoFuncionaContainer = styled(Box)(({ theme }) => ({
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
     minHeight: "100vh",
     textAlign: "center",
-    backgroundColor: "#262727ff",
-  });
+    // padding-top en móviles para evitar que el navbar tape el contenido
+    [theme.breakpoints.down("md")]: {
+      paddingTop: theme.spacing(10), // cambia el valor si tu navbar tiene otra altura
+    },
+  }));
 
   const carouselItems = [
     {
@@ -66,90 +69,92 @@ const ComoFunciona = () => {
   return (
     <ComoFuncionaContainer>
       <Container>
-        <Typography
-          variant="h4"
-          component="h2"
-          gutterBottom
-          className="urbane-font"
-          sx={{ mb: 4, color: "#f6f6f6" }}
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            flexDirection: { xs: "column", md: "row" },
+            gap: { xs: 2, md: 8 },
+          }}
         >
-          Como Funciona
-        </Typography>
-            <div className="hexegon">1</div>
-        <Grid container spacing={2} justifyContent="center">
-          {/* Primera Card con animación de entrada y salida */}
-          <Grid item xs={12} sm={6} md={4}>
-            <Card
+          <Typography
+            variant="h4"
+            component="h1"
+            className="urbane-font"
+            gutterBottom
+          >
+            Cómo Funciona
+          </Typography>
+          <Grid container spacing={2} justifyContent="center">
+            {/* Primera Card con animación de entrada y salida */}
+            <Grid
+              item
+              xs={12}
+              sm={6}
+              md={4}
               sx={{
-                background: "transparent",
-                color: "#f6f6f6",
-                p: 3,
-                height: "100%",
-                borderColor: "hsla(220, 25%, 25%, 0.3)",
-                alignItems: "center",
-                justifyContent: "center",
                 display: "flex",
                 flexDirection: "column",
+                alignItems: "center",
               }}
             >
-              <CardMedia
-                className={`animate__animated ${animationClass}`}
-                component="img"
-                image={carouselItems[currentIndex].img}
-                alt={carouselItems[currentIndex].title}
-                sx={{
-                  width: "100%",
-                  maxHeight: 300,
-                  objectFit: "contain",
-                  mb: 2,
-                }}
-              />
+              <Typography className="number-badge" variant="h5" component="p">
+                1
+              </Typography>
               <Typography
                 gutterBottom
-                sx={{ fontWeight: "medium" }}
-                className={`animate__animated ${animationClass}`}
+                mt={3}
+                variant="h5"
+                component="h3"
+                sx={{ fontWeight: "600" }}
+                className={`animate__animated ${animationClass} urbane-font`}
               >
-                <div className="hexegon">1</div>
                 {carouselItems[currentIndex].title}
               </Typography>
-            </Card>
-          </Grid>
+              <img
+                src={carouselItems[currentIndex].img}
+                alt={carouselItems[currentIndex].title}
+                className={`animate__animated ${animationClass} como-funciona-img`}
+              />
+            </Grid>
 
-          {/* Otras Cards estáticas */}
-          {otherCards.map((item, idx) => (
-            <Grid item xs={12} sm={6} md={4} key={idx}>
-              <Card
+            {/* Otras Cards estáticas */}
+            {otherCards.map((item, idx) => (
+              <Grid
+                item
+                xs={12}
+                sm={6}
+                md={4}
+                key={idx}
                 sx={{
-                  background: "transparent",
-                  color: "#f6f6f6",
-                  p: 3,
-                  height: "100%",
-                  borderColor: "hsla(220, 25%, 25%, 0.3)",
-                  alignItems: "center",
-                  justifyContent: "center",
                   display: "flex",
                   flexDirection: "column",
+                  alignItems: "center",
                 }}
               >
-                <CardMedia
-                  component="img"
-                  image={item.img}
-                  alt={item.title}
-                  sx={{
-                    width: "100%",
-                    maxHeight: 300,
-                    objectFit: "contain",
-                    mb: 2,
-                  }}
-                />
-                <Typography gutterBottom sx={{ fontWeight: "medium" }}>
-                  <div className="number-badge">2</div>
+                <Typography className="number-badge" variant="h5" component="p">
+                  {idx + 2}
+                </Typography>
+                <Typography
+                  gutterBottom
+                  mt={3}
+                  variant="h5"
+                  component="h3"
+                  sx={{ fontWeight: "600" }}
+                  className="urbane-font"
+                >
                   {item.title}
                 </Typography>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
+                <img
+                  src={item.img}
+                  alt={item.title}
+                  className="como-funciona-img"
+                />
+              </Grid>
+            ))}
+          </Grid>
+        </Box>
       </Container>
     </ComoFuncionaContainer>
   );

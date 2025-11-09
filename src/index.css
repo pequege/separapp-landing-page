@@ -11,7 +11,7 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: #222222;
+  color: #222222 !important;
   background-color: #E6E6E6;
 
   font-synthesis: none;
@@ -50,5 +50,10 @@ h1 {
 .number-badge {/* adjust to control the size  */
   background-color: #F9E813;
   border-radius: 100%;
-  width: 25px;
+  height: 40px;
+  width: 40px;
+}
+
+.como-funciona-img{
+  max-width: 300px;
 }

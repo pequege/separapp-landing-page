@@ -13,7 +13,6 @@ const HeroContainer = styled(Box)(({ theme }) => ({
   alignItems: "center",
   minHeight: "100vh",
   textAlign: "center",
-  background: "#e6e6e6",
   // padding-top en móviles para evitar que el navbar tape el contenido
   [theme.breakpoints.down("sm")]: {
     paddingTop: theme.spacing(4), // cambia el valor si tu navbar tiene otra altura

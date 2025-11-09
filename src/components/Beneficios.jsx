@@ -11,14 +11,19 @@ import { styled } from "@mui/system";
 import { useState } from "react";
 
 const Beneficios = () => {
-  const BeneficiosContainer = styled(Box)({
+  const BeneficiosContainer = styled(Box)(({ theme }) => ({
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
     minHeight: "100vh",
-    textAlign: "start"
-  });
+    textAlign: "start",
+    // padding-top en móviles para evitar que el navbar tape el contenido
+    [theme.breakpoints.down("md")]: {
+      paddingTop: theme.spacing(10), // cambia el valor si tu navbar tiene otra altura
+      paddingBottom: theme.spacing(5), 
+    },
+  }));
 
   const cards = [
     {
@@ -60,12 +65,12 @@ const Beneficios = () => {
       >
         <Box sx={{ width: "100%", maxWidth: 1100 }}>
           <Typography
-            variant="h2"
-            component="h2"
+            variant="h4"
+            component="h1"
             className="urbane-font"
-            sx={{ mb: 4 }}
+            gutterBottom
           >
-            Impacto Esperado
+            Beneficios Esperados
           </Typography>
 
           {/* Grid centrado */}
@@ -105,7 +110,7 @@ const Beneficios = () => {
                     alt={card.title}
                   />
                   <CardContent sx={{ height: "100%" }}>
-                    <Typography variant="h5" component="div">
+                    <Typography variant="h6" component="div">
                       {card.title}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
