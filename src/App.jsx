@@ -3,7 +3,7 @@ import './App.css'
 import { Box } from '@mui/material'
 import ComoFunciona from './components/ComoFunciona'
 import Beneficios from './components/Beneficios'
-import Navbar from './components/navbar'
+import Navbar from './components/AppBar'
 import { Footer } from './components/Footer'
 import Contacto from './components/Contacto'
 
