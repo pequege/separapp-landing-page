@@ -5,6 +5,7 @@ import ComoFunciona from './components/ComoFunciona'
 import Beneficios from './components/Beneficios'
 import Navbar from './components/navbar'
 import { Footer } from './components/Footer'
+import Contacto from './components/Contacto'
 
 function App() {
   return (
@@ -15,8 +16,8 @@ function App() {
         scrollSnapType: 'y mandatory',
       }}
     >
+      <Navbar />
       <div style={{ scrollSnapAlign: 'start', height: '100vh' }}>
-        <Navbar />
         <Hero />
       </div>
       <div style={{ scrollSnapAlign: 'start' }}>
@@ -24,6 +25,9 @@ function App() {
       </div>
       <div style={{ scrollSnapAlign: 'start' }}>
         <Beneficios />
+      </div>
+      <div style={{ scrollSnapAlign: 'start', height: '100vh' }}>
+        <Contacto />
       </div>
       <div style={{ scrollSnapAlign: 'end', height: 'auto' }}>
         <Footer />

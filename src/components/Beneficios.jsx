@@ -63,7 +63,15 @@ const Beneficios = () => {
           px: 2,
         }}
       >
-        <Box sx={{ width: "100%", maxWidth: 1100 }}>
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            flexDirection: "column",
+            gap: { xs: 2, md: 8 },
+          }}
+        >
           <Typography
             variant="h4"
             component="h1"
@@ -77,9 +85,9 @@ const Beneficios = () => {
           <Box
             sx={{
               width: "100%",
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
-              gap: 2,
+              display: "flex",
+              flexDirection: { xs: "column", sm: "row" },
+              gap: 4,
               justifyContent: "center", // centra el grid dentro del contenedor
               alignItems: "start",
               margin: "0 auto",
@@ -88,7 +96,7 @@ const Beneficios = () => {
             {cards.map((card, index) => (
               <Card
                 key={card.id}
-                sx={{ width: "100%", maxWidth: 360, margin: "0 auto" }}
+                sx={{ height:"100%",width: "100%", maxWidth: 360, margin: "0 auto" }}
               >
                 <CardActionArea
                   onClick={() => setSelectedCard(index)}
@@ -112,7 +120,7 @@ const Beneficios = () => {
                     autoPlay={true}
                     loop
                     sx={{
-                      height: 200,
+                      maxHeight: "200px",
                       width: "100%",
                       objectFit: "cover",
                       backgroundColor: "#000", // fallback mientras carga

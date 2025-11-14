@@ -42,7 +42,7 @@ const StyledButton = styled(Button)({
 
 const Hero = () => {
   return (
-    <HeroContainer>
+    <HeroContainer id="hero">
       <Container>
         <HeroContent>
           <Box

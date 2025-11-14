@@ -1,5 +1,10 @@
 import { useState, useEffect } from "react";
-import { Box, Container, Typography } from "@mui/material";
+import {
+  Box,
+  Container,
+  Typography,
+  useMediaQuery,
+} from "@mui/material";
 import { Grid, styled } from "@mui/system";
 import "animate.css";
 
@@ -12,7 +17,7 @@ const ComoFunciona = () => {
     minHeight: "100vh",
     textAlign: "center",
     // padding-top en móviles para evitar que el navbar tape el contenido
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down("lg")]: {
       paddingTop: theme.spacing(10), // cambia el valor si tu navbar tiene otra altura
     },
   }));
@@ -43,38 +48,47 @@ const ComoFunciona = () => {
     },
   ];
 
+  const isVerySmall = useMediaQuery("(max-width:1200px)");
+
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [animationClass, setAnimationClass] = useState("animate__backInRight");
+  const [animationClass, setAnimationClass] = useState(
+    isVerySmall ? "animate__fadeInRight" : "animate__fadeInDown"
+  );
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      // Primero animación de salida
-      setAnimationClass("animate__backOutLeft");
+    let timeoutId = null;
+    const inClass = isVerySmall ? "animate__fadeInRight" : "animate__fadeInDown";
+    const outClass = isVerySmall ? "animate__fadeOutLeft" : "animate__fadeOutDown";
 
-      // Esperamos a que termine la animación de salida (duración típica de animate.css = 1s)
-      setTimeout(() => {
-        // Cambiamos el contenido
+    const interval = setInterval(() => {
+      // animación de salida
+      setAnimationClass(outClass);
+
+      // espera a que termine la animación de salida antes de cambiar slide
+      timeoutId = window.setTimeout(() => {
         setCurrentIndex((prevIndex) =>
           prevIndex === carouselItems.length - 1 ? 0 : prevIndex + 1
         );
-
-        // Después aplicamos la animación de entrada
-        setAnimationClass("animate__backInRight");
+        // animación de entrada
+        setAnimationClass(inClass);
       }, 1000);
     }, 5000);
 
-    return () => clearInterval(interval);
-  }, []);
+    return () => {
+      clearInterval(interval);
+      if (timeoutId) clearTimeout(timeoutId);
+    };
+  }, [isVerySmall]); // re-ejecuta cuando cambia el breakpoint / ancho < 500px
 
   return (
-    <ComoFuncionaContainer>
+    <ComoFuncionaContainer id="howitworks">
       <Container>
         <Box
           sx={{
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            flexDirection: { xs: "column", md: "row" },
+            flexDirection: "column",
             gap: { xs: 2, md: 8 },
           }}
         >
@@ -86,13 +100,17 @@ const ComoFunciona = () => {
           >
             Cómo Funciona
           </Typography>
-          <Grid container spacing={2} justifyContent="center">
+          <Grid
+            container
+            spacing={2}
+            justifyContent="center"
+            alignItems="center"
+            sx={{ flexDirection: { xs: "column", lg: "row" } }}
+          >
             {/* Primera Card con animación de entrada y salida */}
             <Grid
               item
               xs={12}
-              sm={6}
-              md={4}
               sx={{
                 display: "flex",
                 flexDirection: "column",
@@ -118,14 +136,12 @@ const ComoFunciona = () => {
                 className={`animate__animated ${animationClass} como-funciona-img`}
               />
             </Grid>
-
             {/* Otras Cards estáticas */}
             {otherCards.map((item, idx) => (
               <Grid
                 item
                 xs={12}
-                sm={6}
-                md={4}
+                lg={4}
                 key={idx}
                 sx={{
                   display: "flex",

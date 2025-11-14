@@ -24,9 +24,9 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
 }));
 
 const pages = [
-  { label: "Inicio", href: "/" },
-  { label: "Beneficios", href: "/beneficios" },
-  { label: "Contacto", href: "/contacto" },
+  { label: "Inicio", href: "#hero" },
+  { label: "Como Funciona", href: "#howitworks" },
+  { label: "Contacto", href: "#contact" },
 ];
 
 function Navbar() {
@@ -38,6 +38,24 @@ function Navbar() {
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
+  };
+
+  // smooth scroll handler for internal anchors
+  const handleNavClick = (event, href) => {
+    // only handle hash links
+    if (href && href.startsWith("#")) {
+      event.preventDefault();
+      const id = href.slice(1);
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      } else {
+        // fallback: try querySelector
+        const sel = document.querySelector(href);
+        if (sel) sel.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+      handleCloseNavMenu();
+    }
   };
 
   return (
@@ -84,7 +102,7 @@ function Navbar() {
                     key={page.label}
                     component="a"
                     href={page.href}
-                    onClick={handleCloseNavMenu}
+                    onClick={(e) => handleNavClick(e, page.href)}
                   >
                     {page.label}
                   </MenuItem>
@@ -118,6 +136,7 @@ function Navbar() {
                 <Button
                   key={page.label}
                   href={page.href}
+                  onClick={(e) => handleNavClick(e, page.href)}
                   sx={{
                     color: "text.primary",
                     display: "block",
