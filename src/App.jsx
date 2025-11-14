@@ -3,7 +3,7 @@ import './App.css'
 import { Box } from '@mui/material'
 import ComoFunciona from './components/ComoFunciona'
 import Beneficios from './components/Beneficios'
-import Navbar from './components/AppBar'
+import AppBar from './components/Navbar'
 import { Footer } from './components/Footer'
 import Contacto from './components/Contacto'
 
@@ -16,7 +16,7 @@ function App() {
         scrollSnapType: 'y mandatory',
       }}
     >
-      <Navbar />
+      <AppBar />
       <div style={{ scrollSnapAlign: 'start', height: '100vh' }}>
         <Hero />
       </div>
