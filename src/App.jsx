@@ -6,6 +6,7 @@ import Beneficios from './components/Beneficios'
 import AppBar from './components/Navbar'
 import { Footer } from './components/Footer'
 import Contacto from './components/Contacto'
+import Salud from './components/Salud'
 
 function App() {
   return (
@@ -22,6 +23,9 @@ function App() {
       </div>
       <div style={{ scrollSnapAlign: 'start' }}>
         <ComoFunciona />
+      </div>
+      <div style={{ scrollSnapAlign: 'start' }}>
+        <Salud />
       </div>
       <div style={{ scrollSnapAlign: 'start' }}>
         <Beneficios />

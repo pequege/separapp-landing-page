@@ -8,6 +8,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
+import Badge from "@mui/material/Badge";
 import { styled, Typography } from "@mui/material";
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
@@ -26,6 +27,7 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
 const pages = [
   { label: "Inicio", href: "#hero" },
   { label: "Como Funciona", href: "#howitworks" },
+  { label: "Separapp Salud", href: "#salud" },
   { label: "Contacto", href: "#contact" },
 ];
 
@@ -132,19 +134,34 @@ function Navbar() {
                 order: 2,
               }}
             >
-              {pages.map((page) => (
-                <Button
+              {pages.map((page, idx) => (
+                <Badge
                   key={page.label}
-                  href={page.href}
-                  onClick={(e) => handleNavClick(e, page.href)}
+                  variant={idx === 2 ? "dot" : null}
+                  badgeContent={idx === 2 ? " " : null}
                   sx={{
-                    color: "text.primary",
-                    display: "block",
-                    fontWeight: 600,
+                    "& .MuiBadge-badge": {
+                      right: 3,
+                      top: 13,
+                      width: 12,
+                      height: 12,
+                      borderRadius: "50%",
+                      backgroundColor: "#F59B1B",
+                    },
                   }}
                 >
-                  {page.label}
-                </Button>
+                  <Button
+                    href={page.href}
+                    onClick={(e) => handleNavClick(e, page.href)}
+                    sx={{
+                      color: "text.primary",
+                      display: "block",
+                      fontWeight: 600,
+                    }}
+                  >
+                    {page.label}
+                  </Button>
+                </Badge>
               ))}
             </Box>
         </StyledToolbar>
